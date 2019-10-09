@@ -100,6 +100,8 @@ frame = 0
 dir = 1
 
 while running:
-    handle_events()
+     draw_curve_10_points(point[0], point[1], point[2], point[3], point[4], point[5], point[6], point[7], point[8],
+                         point[9])
+     handle_events()
 
 close_canvas()
