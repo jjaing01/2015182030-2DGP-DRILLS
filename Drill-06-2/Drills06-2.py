@@ -58,6 +58,36 @@ def direct_character(p1, p2):
         dir = 0
 
 
+def draw_curve_10_points(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10):
+    global dir
+
+    draw_middle(p10, p1, p2, p3, 0, 100)
+    # draw p2-p3
+    draw_middle(p1, p2, p3, p4, 0, 100)
+
+    # draw p3-p4
+    draw_middle(p2, p3, p4, p5, 0, 100)
+
+    # draw p4-p5
+    draw_middle(p3, p4, p5, p6, 0, 100)
+
+    # draw p5-p6
+    draw_middle(p4, p5, p6, p7, 0, 100)
+
+    # draw p6-p7
+    draw_middle(p5, p6, p7, p8, 0, 100)
+
+    # draw p7-p8
+    draw_middle(p6, p7, p8, p9, 0, 100)
+
+    # draw p8-p9
+    draw_middle(p7, p8, p9, p10, 0, 100)
+
+    # draw p9-p10
+    draw_middle(p8, p9, p10, p1, 0, 100)
+
+    # draw p10-p11
+    draw_middle(p9, p10, p1, p2, 0, 100)
 
 
 open_canvas(KPU_WIDTH, KPU_HEIGHT)
