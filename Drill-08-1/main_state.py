@@ -43,6 +43,7 @@ class Boy:
         self.x += self.dir
         if self.x >= 800:
             self.dir = -1
+
         elif self.x <= 0:
             self.dir = 1
 
