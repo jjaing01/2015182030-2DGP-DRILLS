@@ -17,7 +17,7 @@ font = None
 
 class Font:
     def __init__(self):
-        self.image = load_image('paused.png')
+        self.image = load_image('pause.png')
 
     def draw(self):
         self.image.draw(400, 300)
