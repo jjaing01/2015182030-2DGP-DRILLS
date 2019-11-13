@@ -10,7 +10,7 @@ class Brick:
     def __init__(self):
         if Brick.image is None:
             Brick.image = load_image('brick180x40.png')
-        self.x, self.y = 1600 // 2, 300
+        self.x, self.y = 1600 // 2, 200
         self.speed = 200
         self.dir = 1
 

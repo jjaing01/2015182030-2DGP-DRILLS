@@ -106,8 +106,6 @@ def update():
         boy.isColi = False
 
     if boy.isColi:
-        # print("Coli")
-        #print(boy.Term)
         pass
 
 
