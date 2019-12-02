@@ -3,6 +3,9 @@ from pico2d import *
 
 import game_world
 
+ball_cnt = 0
+
+
 # Boy Run Speed
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
 RUN_SPEED_KMPH = 20.0  # Km / Hour
@@ -120,7 +123,9 @@ class Boy:
         self.event_que = []
         self.cur_state = WalkingState
         self.cur_state.enter(self, None)
-        self.score = 0
+
+        self.radius = 50
+        self.isDead = False
 
     def get_bb(self):
         return self.x - 50, self.y - 50, self.x + 50, self.y + 50
@@ -145,12 +150,13 @@ class Boy:
             self.cur_state.enter(self, event)
 
     def draw(self):
+        global ball_cnt
+
         self.cur_state.draw(self)
         self.font.draw(self.posx - 60, self.posy + 50, '(%5d, %5d)' % (self.x, self.y), (255, 255, 0))
-        self.font.draw(self.posx - 60, self.posy + 100, '%5d' % (self.score), (255, 255, 0))
+        self.font.draw(self.posx - 60, self.posy + 75, 'ball_cnt : %d)' % (ball_cnt), (255, 255, 0))
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
-

@@ -8,26 +8,15 @@ import game_world
 
 from boy import Boy
 from background import FixedBackground as Background
-from ball import Ball
+import ball
+import collision_mgr
 
 
 name = "MainState"
 
 boy = None
 background = None
-balls=[]
 
-def collide(a, b):
-    # fill here
-    left_a, bottom_a, right_a, top_a = a.get_bb()
-    left_b, bottom_b, right_b, top_b = b.get_bb()
-
-    if left_a > right_b: return False
-    if right_a < left_b: return False
-    if top_a < bottom_b: return False
-    if bottom_a > top_b: return False
-
-    return True
 
 def enter():
     global boy
@@ -41,10 +30,9 @@ def enter():
     background.set_center_object(boy)
     boy.set_background(background)
 
-    global balls
-    balls = [Ball() for i in range(100)]
-    game_world.add_objects(balls,1)
-   
+    for n in range(0, 100):
+        game_world.add_object(ball.Ball(background), 2)
+
 def exit():
     game_world.clear()
 
@@ -68,16 +56,10 @@ def handle_events():
 
 
 def update():
-    global boy
     for game_object in game_world.all_objects():
         game_object.update()
 
-    for b in balls:
-        if collide(boy,b):
-            balls.remove(b)
-            del(b)
-            boy.score += 1
-
+    collision_mgr.Collision_Boy_Ball(game_world.objects[2], game_world.objects[1])
 
 def draw():
     clear_canvas()
